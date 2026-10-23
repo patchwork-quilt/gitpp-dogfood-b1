@@ -1,7 +1,0 @@
-{
-  "id": "hold-storm",
-  "kind": "task",
-  "parents": ["genesis"],
-  "effects": { "deploy.hold": true },
-  "reason": "storm coming"
-}
