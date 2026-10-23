@@ -1,0 +1,7 @@
+{
+  "id": "claim-dock-7",
+  "kind": "task",
+  "parents": ["genesis"],
+  "effects": { "task.claim.dock-7": "agent-dockhand" },
+  "reason": "taking the dock-7 refit"
+}

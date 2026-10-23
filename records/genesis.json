@@ -1,0 +1,7 @@
+{
+  "id": "genesis",
+  "kind": "witness",
+  "parents": [],
+  "effects": { "deploy.hold": false },
+  "reason": "the surface opens with deploys running"
+}

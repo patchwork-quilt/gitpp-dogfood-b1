@@ -1,0 +1,7 @@
+{
+  "id": "oncall-rota",
+  "kind": "task",
+  "parents": ["genesis"],
+  "effects": { "oncall.primary": "rota-lead" },
+  "reason": "this week's rota"
+}
