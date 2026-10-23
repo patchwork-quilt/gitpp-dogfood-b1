@@ -1,1 +1,0 @@
-{"id":"state-prop","kind":"task","parents":["genesis"],"effects":{"oncall.primary":"should-not-apply"},"reason":"a proposal file on the wrong branch"}
