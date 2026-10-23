@@ -7,14 +7,16 @@
       "description": "Claim on one task: the key is task.claim.<task-id>, and the value is the seat (agent or human) working on it."
     },
     "release.freeze": {
-      "description": "A freeze window while releases are frozen — an object {\"from\": \"YYYY-MM-DD\", \"to\": \"YYYY-MM-DD\"}; unset while releases are open. Set by override records.",
-      "example": { "from": "2026-10-19", "to": "2026-10-23" }
+      "description": "A freeze window while releases are frozen; unset while releases are open. Set by override records."
     },
     "deploy.hold": {
       "description": "true while deploys are held; the reason rides in the record's reason field."
     },
     "oncall.primary": {
       "description": "The seat holding the pager right now, as a login or rota name."
+    },
+    "probe.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.*": {
+      "description": "An over-long pattern that must be refused."
     }
   }
 }
