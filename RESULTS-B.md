@@ -80,3 +80,29 @@ drills 2–4 test the filter.)
    present at the last derivation, derived or not. The naming still
    worked exactly when it mattered (drill 5B); the word "derived"
    slightly overclaims for rejected records.
+
+## Addendum — re-drill after the retire-anchor fix (2026-10-23 UTC)
+
+The three deviations above were fixed in gitpp-app PR #8 (branch
+`fix/surface-retire-anchor`, deployed from the branch for this
+re-drill; harness `bun surface.test.mjs` 64 passed, 0 failed,
+including new S8 = this drill's scenario, S9 = never-declared
+control, S10 = check_suite-driven basis time). The drills below
+re-ran against the deployed fix on this repo.
+
+| Step | Push | Check | Verdict |
+|---|---|---|---|
+| Retire `deploy.hold` again | `581167e` | 120186211532 | **PASS** — "4 landed records · 2 keys · 0 conflict(s) · **0 orphan(s)**" (drill 4 read 0 keys · 2 orphans). State kept `oncall.primary` = rota-lead and `task.claim.dock-7` = agent-dockhand; genesis + hold-storm listed under Retired; the retired key absent from state. |
+| Restore `deploy.hold` (normal commit) | `a85241b` | 120186378569 | **PASS** — full state back: `deploy.hold` = true (winner `hold-storm`), 3 keys · 1 conflict · 0 orphans, no Retired section. |
+| Remove `hold-storm` (history-wording probe) | `3b979f2` | 120186563696 | **PASS** — the History integrity line fired in the new wording: "1 record(s) **present in the surface** on 2026-10-23T01:21:54.353Z are absent from `gitpp/state` at `3b979f2`: `hold-storm` — the branch history was rewritten or records were deleted". |
+| Restore `hold-storm` — branch tidy | `f9a4a1b` | 120186717129 | **PASS** — "4 landed records · 3 keys · 1 conflict(s) · 0 orphan(s)", `deploy.hold` = true, no History section. `gitpp/state` ends at `f9a4a1b` with the original surface.json (all four keys) and the original four records. |
+
+On the basis line: every re-drill Check carried a real "surface
+last changed" timestamp. The intermittency's root cause (found in
+the code, fixed in the same PR): the time came from the webhook
+payload or the discovery cache — a push payload carries
+`head_commit.timestamp`, a check_suite payload carries none, and
+whichever twin won the per-commit claim decided whether the time
+existed (a null could also be cached and inherited by a later
+probe-path derivation). The time is now read from the tip commit
+itself whenever no payload or cache supplied one.
