@@ -106,3 +106,19 @@ whichever twin won the per-commit claim decided whether the time
 existed (a null could also be cached and inherited by a later
 probe-path derivation). The time is now read from the tip commit
 itself whenever no payload or cache supplied one.
+
+## Addendum — re-check after the retired-line wording fix (2026-10-23 UTC)
+
+One line of wording remained imprecise after PR #8: the Retired
+line for a fully-retired record still said "the record did not
+derive", when since PR #8 the record anchors its descendants and
+only its effects stop deriving. Fixed in gitpp-app PR #9 (branch
+`fix/retired-line-wording`, deployed from the branch for this
+re-check; harness `bun surface.test.mjs` 65 passed, 0 failed, S8
+gaining a pinned assertion on the new wording). The partial
+(mixed-record) Retired line renders unchanged.
+
+| Step | Push | Check | Verdict |
+|---|---|---|---|
+| Retire `deploy.hold` once more | `354ee8f` | 120187802201 | **PASS** — "4 landed records · 2 keys · 0 conflict(s) · 0 orphan(s)"; state kept `oncall.primary` = rota-lead and `task.claim.dock-7` = agent-dockhand. The Retired line for genesis, verbatim: "record `genesis` (in `records/genesis.json`) — key(s) `deploy.hold` were declared before and are not declared now; its effects did not derive, but the record still anchors its descendants. Preserved on `gitpp/state`; re-declaring the key revives its effects exactly as they were" (same line for `hold-storm`). |
+| Restore `deploy.hold` (normal commit) — branch tidy | `063bbfe` | 120188015170 | **PASS** — "4 landed records · 3 keys · 1 conflict(s) · 0 orphan(s)", `deploy.hold` = true (winner `hold-storm`), no Retired section. `gitpp/state` ends at `063bbfe` with the original surface.json (all four keys) and the original four records. |
