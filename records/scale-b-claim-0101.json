@@ -1,0 +1,1 @@
+{"id":"scale-b-claim-0101","kind":"task","parents":["genesis"],"effects":{"task.claim.k0101":"agent-0101"},"reason":"scale measurement generated claim"}
