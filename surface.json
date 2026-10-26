@@ -15,6 +15,9 @@
     },
     "oncall.primary": {
       "description": "The seat holding the pager right now, as a login or rota name."
+    },
+    "berth.assignment": {
+      "description": "The berth the fleet is assigned under the current harbour plan, as a berth id (e.g. dock-7-winter)."
     }
   }
 }

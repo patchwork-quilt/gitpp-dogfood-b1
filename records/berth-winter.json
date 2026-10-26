@@ -1,0 +1,11 @@
+{
+  "id": "berth-winter",
+  "kind": "task",
+  "parents": [
+    "genesis"
+  ],
+  "effects": {
+    "berth.assignment": "dock-7-winter"
+  },
+  "reason": "winter berth plan: the fleet ties up at dock 7 for the season"
+}
