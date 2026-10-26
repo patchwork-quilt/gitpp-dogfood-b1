@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 222" role="img" aria-labelledby="mapb-title" font-family="ui-monospace, Menlo, Consolas, monospace">
+<title id="mapb-title">Mapping B surface flow: a declared surface becomes the git.pp surface Check</title>
+<rect x="0" y="0" width="980" height="222" fill="#ffffff"/>
+<defs><marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker></defs>
+<g font-size="13" fill="#111">
+<rect x="0" y="10" width="310" height="66" fill="#f7f7f7" stroke="#111" stroke-width="1.5"/>
+<text x="155" y="37" text-anchor="middle">orphan branch gitpp/state:</text>
+<text x="155" y="55" text-anchor="middle">surface.json + records</text>
+<rect x="0" y="130" width="310" height="66" fill="none" stroke="#111" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="155" y="151" text-anchor="middle">PR proposals under</text>
+<text x="155" y="168" text-anchor="middle">.gitpp/proposals/</text>
+<text x="155" y="185" text-anchor="middle">(labelled preview)</text>
+<line x1="312" y1="48" x2="386" y2="94" stroke="#111" stroke-width="1.5" marker-end="url(#arrB)"/>
+<line x1="312" y1="158" x2="386" y2="112" stroke="#111" stroke-width="1.5" marker-end="url(#arrB)"/>
+<rect x="390" y="63" width="270" height="80" fill="#f7f7f7" stroke="#111" stroke-width="1.5"/>
+<text x="525" y="85" text-anchor="middle">surface derivation —</text>
+<text x="525" y="101" text-anchor="middle">declared keys only;</text>
+<text x="525" y="117" text-anchor="middle">undeclared keys</text>
+<text x="525" y="133" text-anchor="middle">rejected by name</text>
+<line x1="662" y1="103" x2="716" y2="103" stroke="#111" stroke-width="1.5" marker-end="url(#arrB)"/>
+<rect x="720" y="63" width="260" height="80" fill="#f7f7f7" stroke="#111" stroke-width="1.5"/>
+<text x="850" y="85" text-anchor="middle">Check <tspan font-weight="bold">git.pp surface</tspan> —</text>
+<text x="850" y="101" text-anchor="middle">scope line first:</text>
+<text x="850" y="117" text-anchor="middle">what was derived,</text>
+<text x="850" y="133" text-anchor="middle">what was not read</text>
+<g font-size="12" fill="#444">
+<text x="490" y="192" text-anchor="middle">retired keys stay listed as Retired;</text>
+<text x="490" y="210" text-anchor="middle">a force-push names the records that vanished</text>
+</g>
+</g>
+</svg>
