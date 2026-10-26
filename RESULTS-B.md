@@ -122,3 +122,30 @@ gaining a pinned assertion on the new wording). The partial
 |---|---|---|---|
 | Retire `deploy.hold` once more | `354ee8f` | 120187802201 | **PASS** — "4 landed records · 2 keys · 0 conflict(s) · 0 orphan(s)"; state kept `oncall.primary` = rota-lead and `task.claim.dock-7` = agent-dockhand. The Retired line for genesis, verbatim: "record `genesis` (in `records/genesis.json`) — key(s) `deploy.hold` were declared before and are not declared now; its effects did not derive, but the record still anchors its descendants. Preserved on `gitpp/state`; re-declaring the key revives its effects exactly as they were" (same line for `hold-storm`). |
 | Restore `deploy.hold` (normal commit) — branch tidy | `063bbfe` | 120188015170 | **PASS** — "4 landed records · 3 keys · 1 conflict(s) · 0 orphan(s)", `deploy.hold` = true (winner `hold-storm`), no Retired section. `gitpp/state` ends at `063bbfe` with the original surface.json (all four keys) and the original four records. |
+
+## Addendum — Surface grows (2026-10-26 UTC)
+
+The surface outlived its acceptance: on the day this repo became a
+real project (the ferryctl build-out on main), the surface grew by
+one key, the ordinary way — one commit on `gitpp/state`, no history
+rewritten.
+
+| Step | Push | Check | Verdict |
+|---|---|---|---|
+| Declare `berth.assignment` in surface.json + land record `berth-winter` (`berth.assignment` = `dock-7-winter`, parent `genesis`) | `9356b00` (fast-forward from `c958ee9`) | 121825080430 | **PASS** — "5 landed records · 4 keys set · 1 declared unset · 1 conflict(s) · 0 orphan(s)". The new key derived with its declaration description printed; every previous key intact (`deploy.hold` = true, winner `hold-storm`, loser `genesis`; `oncall.primary` = rota-lead; `task.claim.dock-7` = agent-dockhand; `release.freeze` unset). **No History section** — no record named as vanished, as expected of an append-only push. |
+| Proposal PR #1 (branch `propose/berth-spring`): `.gitpp/proposals/berth-spring.json` — `berth-spring` (task, parent `berth-winter`) sets `berth.assignment` = `dock-3-spring` | head `9b9ad32` | 121825614966 | **PASS** — preview Check "what lands if these proposals do": State (as landed) unchanged, `berth.assignment` = `dock-7-winter` (winner `berth-winter`); under In flight, "proposal `berth-spring` sets `berth.assignment` = dock-3-spring — would win", and the separate union derivation shows `berth.assignment` = `dock-3-spring` (winner `berth-spring`). The proposal is labelled, not landed; the PR stays open and nothing has landed by it. |
+
+**Independent verification.** The new state tip was folded locally
+with `tools/derive-snapshot.mjs` (the gitpp-app's derivation —
+validateSurface + applyDeclarationGate + derive — extracted the way
+the app's own harness extracts it): 5 records · 4 keys · 1 conflict ·
+0 orphans, state identical to Check 121825080430 line for line. The
+union was folded the same way (landed records + the proposal):
+`berth.assignment` = `dock-3-spring`, winner `berth-spring`, loser
+`berth-winter`; all other keys identical to the preview Check's
+union section. **The App and the independent fold agree exactly,
+on both derivations.**
+
+The regenerated snapshot (`surface-state.json` @ `9356b00`) is
+committed on main alongside this addendum, so the CLI's `berth`
+command now answers from the surface it describes.

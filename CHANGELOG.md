@@ -27,6 +27,20 @@ The dogfood dressing becomes the project it was dressed as.
   the gitpp-app's deployment page.
 - **LICENSE** (MIT) and this changelog.
 
+### Surface
+
+- **`berth.assignment` declared and landed** on `gitpp/state`
+  (commit `9356b00`, an ordinary fast-forward — the branch's
+  history untouched): record `berth-winter` sets it to
+  `dock-7-winter`. The `git.pp surface` Check (121825080430)
+  derived the new key with all previous keys intact and no
+  vanished-records complaint; the local derivation agrees exactly.
+  Snapshot regenerated @ `9356b00` (5 records · 4 keys).
+- **PR #1 proposes the follow-up**: `berth-spring` would move the
+  fleet to `dock-3-spring`; its preview Check (121825614966) shows
+  the proposed value labelled as proposed, landed state unchanged.
+  The full episode is recorded in RESULTS-B.md ("Surface grows").
+
 ### Changed
 
 - README rewritten to the three-altitude standard: a runnable

@@ -20,11 +20,12 @@ $ git clone https://github.com/patchwork-quilt/gitpp-dogfood-b1
 $ cd gitpp-dogfood-b1
 
 $ python3 ferryctl.py surface
-ferry-ops surface — derived from gitpp/state @ c958ee9 (4 records · 3 keys · 1 conflict(s) · 0 orphan(s))
+ferry-ops surface — derived from gitpp/state @ 9356b00 (5 records · 4 keys · 1 conflict(s) · 0 orphan(s))
 task.claim.dock-7 = agent-dockhand (winner claim-dock-7)
 release.freeze = unset
 deploy.hold = true (winner hold-storm; losers: genesis)
 oncall.primary = rota-lead (winner oncall-rota)
+berth.assignment = dock-7-winter (winner berth-winter)
 
 $ python3 ferryctl.py claims
 dock-7       agent-dockhand (record claim-dock-7)
@@ -34,6 +35,9 @@ deploys HELD (winner hold-storm)
 
 $ python3 ferryctl.py oncall
 oncall.primary: rota-lead (record oncall-rota)
+
+$ python3 ferryctl.py berth
+berth.assignment: dock-7-winter (record berth-winter)
 
 $ python3 ferryctl.py freeze
 releases open — no freeze window on the surface
@@ -108,6 +112,7 @@ names the branch; the declaration itself lives there. The keys:
 | `release.freeze` | A freeze window while releases are frozen — an object `{"from": "YYYY-MM-DD", "to": "YYYY-MM-DD"}`; unset while releases are open. Set by override records. |
 | `deploy.hold` | `true` while deploys are held; the reason rides in the record's reason field. |
 | `oncall.primary` | The seat holding the pager right now, as a login or rota name. |
+| `berth.assignment` | The berth the fleet is assigned under the current harbour plan, as a berth id (e.g. dock-7-winter). Declared and landed 2026-10-26 — see the "Surface grows" addendum in RESULTS-B.md. |
 
 **Proposals** ride in pull requests as `.gitpp/proposals/*.json`:
 a seat that wants to change the surface proposes the record in its

@@ -2,8 +2,9 @@
   "surface": "ferry-ops",
   "branch": "gitpp/state",
   "derived_from": {
-    "gitpp_state_tip": "c958ee9c3b8b8a531203bb6285bc14bffa8a413a",
+    "gitpp_state_tip": "9356b00b7017fd7369767afb2556e8249fd04644",
     "records": [
+      "berth-winter",
       "claim-dock-7",
       "genesis",
       "hold-storm",
@@ -13,8 +14,8 @@
     "fold_source": "patchwork-quilt/gitpp-app worker.js @ fc77e734831e312729da834a88922f1f024e50a5 (core slice: validateSurface + applyDeclarationGate + derive — the same extraction the app's own surface.test.mjs performs)"
   },
   "counts": {
-    "records": 4,
-    "keys": 3,
+    "records": 5,
+    "keys": 4,
     "conflicts": 1,
     "orphans": 0
   },
@@ -30,9 +31,17 @@
     },
     "oncall.primary": {
       "description": "The seat holding the pager right now, as a login or rota name."
+    },
+    "berth.assignment": {
+      "description": "The berth the fleet is assigned under the current harbour plan, as a berth id (e.g. dock-7-winter)."
     }
   },
   "state": {
+    "berth.assignment": {
+      "value": "dock-7-winter",
+      "winner": "berth-winter",
+      "losers": []
+    },
     "deploy.hold": {
       "value": true,
       "winner": "hold-storm",
