@@ -1,0 +1,7 @@
+{
+  "id": "berth-spring",
+  "kind": "task",
+  "parents": ["berth-winter"],
+  "effects": {"berth.assignment": "dock-3-spring"},
+  "reason": "spring plan: move the fleet to dock 3 when the season turns"
+}
